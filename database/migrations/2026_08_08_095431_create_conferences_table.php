@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('conferences', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->date('registration_deadline')->nullable();
+            $table->text('call_for_papers')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

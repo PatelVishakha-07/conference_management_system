@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('conference_materials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('conference_id')->constrained()->cascadeOnDelete();
+            $table->enum('type', ['brochure', 'flyer']);
+            $table->string('file_path');
             $table->timestamps();
         });
     }
