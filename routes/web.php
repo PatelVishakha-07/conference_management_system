@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ConferenceController;
+use App\Http\Controllers\ConferenceController as AdminConferenceController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ConferenceController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -29,5 +30,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/submissions', [AdminController::class, 'submissions'])->name('submissions');
+    Route::resource('conferences', AdminConferenceController::class)->except(['show']);
     Route::post('/submissions/{submission}/status', [AdminController::class, 'updateStatus'])->name('submissions.status');
 });
+

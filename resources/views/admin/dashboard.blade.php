@@ -5,6 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3 class="section-title mb-0">Admin Dashboard</h3>
         <div>
+            <a href="{{ route('admin.conferences.index') }}" class="btn btn-outline-primary btn-sm">Manage Conferences</a>
             <a href="{{ route('admin.submissions') }}" class="btn btn-outline-primary btn-sm">View Submissions</a>
             <form method="POST" action="{{ route('logout') }}" class="d-inline">
                 @csrf
