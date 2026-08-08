@@ -4,6 +4,15 @@
 <div class="container mt-4" style="max-width:700px;">
     <div class="bg-white rounded-4 shadow-sm p-4">
         <h3 class="section-title">Author Registration & Paper Submission</h3>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="POST" action="{{ route('submissions.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
